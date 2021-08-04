@@ -12,6 +12,13 @@
     <ul>
       <li>상품명 <input type="text" name="itemName"></li>
       <li>파일<input type="file" name="file" ></li> </ul>
+    <!--
+       multipart/form-data 사용 옵션
+       properties 설정 파일에다가 해당 값을 넣어줄 수 있다.
+       spring.servlet.multipart.max-file-size=1MB 파일 하나 최대 사이즈(기본 1MB)
+       spring.servlet.multipart.max-request-size=10MB 요청 파일 전체  사이즈(기본 10MB)
+       사이즈 넘으면 SizeLimitExceededException 발생
+       -->
     <input type="submit"/>
   </form>
 </div> <!-- /container -->
