@@ -15,13 +15,16 @@ import java.util.UUID;
 @Component
 public class FileStore {
 
+    // 경로
     @Value("${file.dir}")
     private String fileDir;
 
+    // fullPath dir+name
     public String getFullPath(String fileName){
         return fileDir + fileName;
     }
 
+    // multipartFiles -> UploadFile
     public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException{
         List<UploadFile> storeFileResult = new ArrayList<>();
         for (MultipartFile multipartFile : multipartFiles) {
@@ -48,12 +51,12 @@ public class FileStore {
     private String createStoreFileName(String originalFileName) {
         String ext = extractExt(originalFileName);
 
-        //서버에 저장하는 파일명
-        // UUID 쓸 것!
+        // 서버에 저장하는 파일명, UUID
         String uuid = UUID.randomUUID().toString();
         return uuid + "." + ext;
     }
 
+    // 확장자 추출
     private String extractExt(String originalFileName){
         int pos = originalFileName.lastIndexOf(".");
         return originalFileName.substring(pos + 1);
